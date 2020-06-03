@@ -8,15 +8,16 @@ class App extends Component {
 
   state={
     user: "weipeluso",
+    userInput:" ",
     userInfo: {},
     followers:[],
     following:[],
   }
 
   componentDidMount(){
+    console.log('I am CDM')
      axios.get(`https://api.github.com/users/${this.state.user}`)
        .then((res)=>{
-         console.log(res.data)
         
          this.setState({
            userInfo:res.data
@@ -48,6 +49,15 @@ class App extends Component {
 
    componentDidUpdate(prePros,preState){
      if(this.state.user!==preState.user){
+      axios.get(`https://api.github.com/users/${this.state.user}`)
+      .then((res)=>{
+       
+        this.setState({
+          userInfo:res.data
+        
+        })
+      })
+      .catch(err=>{console.log(err)})
 
       axios.get(`https://api.github.com/users/${this.state.user}/followers`)
       .then((res)=>{
@@ -68,39 +78,33 @@ class App extends Component {
        
       })
       .catch(err=>{console.log(err)})
-
-
-
-
      }
    }
 
   handleChanges=(e)=>{
     this.setState({
-      user:e.target.value
+      userInput:e.target.value
     })
   }
-
+  
   fetchUser=()=>{
-    axios.get(`https://api.github.com/users/${this.state.user}`)
-       .then((res)=>{
-        
-         this.setState({
-           userInfo:res.data
-         
-         })
-       })
-       .catch(err=>{console.log(err)})
+
+    this.setState({
+     user:this.state.userInput
+    })
 
   }
+
   render(){
     return (
       <div className="App">
         <h1>Hello Github Users</h1>
+        <form onSubmit={this.onSubmit}>
         <input type="text"
-                value={this.state.user}
+                value={this.state.userInput}
                 onChange={this.handleChanges}
         />
+        </form>
         <button onClick={this.fetchUser}>Search By UserName</button>
        <Card userInfo={this.state.userInfo}/>
        <h2>Followers</h2>
