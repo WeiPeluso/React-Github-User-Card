@@ -15,7 +15,6 @@ class App extends Component {
   }
 
   componentDidMount(){
-    console.log('I am CDM')
      axios.get(`https://api.github.com/users/${this.state.user}`)
        .then((res)=>{
         
@@ -99,6 +98,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hello Github Users</h1>
+        <div className="searchArea">
         <form onSubmit={this.onSubmit}>
         <input type="text"
                 value={this.state.userInput}
@@ -106,6 +106,7 @@ class App extends Component {
         />
         </form>
         <button onClick={this.fetchUser}>Search By UserName</button>
+        </div>
        <Card userInfo={this.state.userInfo}/>
        <h2>Followers</h2>
        {this.state.followers.map((follower,index)=>{

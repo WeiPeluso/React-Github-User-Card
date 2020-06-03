@@ -1,11 +1,12 @@
 import React,{Component}from 'react'
+import './Card.css'
 
 class Card extends Component{
  
     render(){
         return(
             <div className="card">
-                <img src={this.props.userInfo.avatar_url} alt="user"/>
+                <img className="photo" src={this.props.userInfo.avatar_url} alt="user"/>
                 <h3>{this.props.userInfo.name}</h3>
                 <p>UserName:&nbsp;{this.props.userInfo.login}</p>     
                 <p>Location:&nbsp;{this.props.userInfo.location}</p> 
