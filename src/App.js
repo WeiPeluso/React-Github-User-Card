@@ -99,12 +99,12 @@ class App extends Component {
       <div className="App">
         <h1>Hello Github Users</h1>
         <div className="searchArea">
-        <form onSubmit={this.onSubmit}>
+
         <input type="text"
                 value={this.state.userInput}
                 onChange={this.handleChanges}
         />
-        </form>
+        
         <button onClick={this.fetchUser}>Search By UserName</button>
         </div>
        <Card userInfo={this.state.userInfo}/>
