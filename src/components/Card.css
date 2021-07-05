@@ -1,0 +1,16 @@
+.card{
+    margin:auto;
+    width:80%;
+border: 2px solid skyblue;
+background-color: skyblue;
+border-radius: 10px;
+margin-bottom:5%;
+
+}
+
+.photo{
+    margin-top:2%;
+    width:60%;
+    height:auto;
+    border-radius: 10px;
+}

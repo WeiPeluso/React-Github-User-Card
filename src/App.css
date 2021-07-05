@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+.searchArea{
+  //border: 2px solid red;
+  height: 10vh;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+button{
+  width:40%;
+}
